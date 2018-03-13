@@ -126,22 +126,67 @@
 
 ; Second section of analysis
 ;
-;Train models on two letters of same typist and then check
+;Train models on two letters of same typist and then check third letter against two trained ones 
+
 
 ;Train 1 and 8
+(define typist-1-1-8 (create-counts 28 1))
+(train (list original-1 original-8)
+       (list corrupted-1 corrupted-8)
+       typist-1-1-8)
 ;Train 4 and 9
+(define typist-2-4-9 (create-counts 28 1))
+(train (list original-4 original-9)
+       (list corrupted-4 corrupted-9)
+       typist-2-4-9)
 ;guess 16
+(display "Testing on letter 16, typist 1 ...")(newline)
+(display "Typist-1-1-8:")(log-likelihood original-16 corrupted-16 typist-1-1-8)
+(display "typist-2-4-9")(log-likelihood original-16 corrupted-16 typist-2-4-9)
 ;guess 18
+(display "Testing on letter 18, typist 2 ...")(newline)
+(display "Typist-1-1-8:")(log-likelihood original-18 corrupted-18 typist-1-1-8)
+(display "typist-2-4-9")(log-likelihood original-18 corrupted-18 typist-2-4-9)
+
 
 ;Train 1 and 16
+(define typist-1-1-16 (create-counts 28 1))
+(train (list original-1 original-16)
+       (list corrupted-1 corrupted-16)
+       typist-1-1-16)
 ;Train 4 and 18
+(define typist-2-4-18 (create-counts 28 1))
+(train (list original-4 original-18)
+       (list corrupted-4 corrupted-18)
+       typist-2-4-18)
 ;guess 8
+(display "Testing on letter 8, typist 1 ...")(newline)
+(display "Typist-1-1-16")(log-likelihood original-8 corrupted-8 typist-1-1-16)
+(display "typist-2-4-18")(log-likelihood original-8 corrupted-8 typist-2-4-18)
 ;guess 9
+(display "Testing on letter 9, typist 2 ...")(newline)
+(display "Typist-1-1-16")(log-likelihood original-9 corrupted-9 typist-1-1-16)
+(display "typist-2-4-18")(log-likelihood original-9 corrupted-9 typist-2-4-18)
 
-;Train 8 and 18
+
+;Train 8 and 16
+(define typist-1-8-16 (create-counts 28 1))
+(train (list original-8 original-16)
+       (list corrupted-8 corrupted-16)
+       typist-1-8-18)
 ;Train 9 and 18
+(define typist-2-9-18 (create-counts 28 1))
+(train (list original-9 original-18)
+       (list corrupted-9 corrupted-18)
+       typist-1-9-18)
 ;guess 1
+(display "Testing on letter 1, typist 1 ...")(newline)
+(display "Typist-1-8-16:")(log-likelihood original-1 corrupted-1 typist-1-8-16)
+(display "typist-2-9-18")(log-likelihood original-1 corrupted-1 typist-2-9-18)
 ;guess 4
+(display "Testing on letter 4, typist 2 ...")(newline)
+(display "Typist-1-8-16:")(log-likelihood original-4 corrupted-4 typist-1-8-16)
+(display "typist-2-9-18")(log-likelihood original-4 corrupted-4 typist-2-9-18)
 
 
 
