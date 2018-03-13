@@ -1,0 +1,8 @@
+(load "charmodel.scm")
+
+(define original "/home/weinman/courses/CSC261/data/mills/original/16.txt")
+(define corrupted "/home/weinman/courses/CSC261/data/mills/corrupted/typist1/16.txt")
+
+(define counts (create-counts 28 1))
+
+(count-conditionals! original corrupted counts)
